@@ -4,7 +4,11 @@ defmodule Hexdocset.Mixfile do
   def project do
     [
       app: :hexdocset,
-      version: "0.0.1",
+      version: "1.0.0",
+      name: "Hexdocset",
+      description: "Convert hex doc to Dash.app's docset format.",
+      package: package,
+      source_url: "https://github.com/yesmeck/hexdocset",
       escript: escript_config,
       elixir: "~> 1.0",
       deps: deps
@@ -35,5 +39,13 @@ defmodule Hexdocset.Mixfile do
 
   def escript_config do
     [ main_module: Hexdocset.CLI ]
+  end
+
+  def package do
+    [
+      contributors: ["Wei Zhu"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/yesmeck/hexdocset"}
+    ]
   end
 end
