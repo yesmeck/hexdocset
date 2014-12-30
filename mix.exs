@@ -2,10 +2,13 @@ defmodule Hexdocset.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :hexdocset,
-     version: "0.0.1",
-     elixir: "~> 1.0",
-     deps: deps]
+    [
+      app: :hexdocset,
+      version: "0.0.1",
+      escript: escript_config,
+      elixir: "~> 1.0",
+      deps: deps
+    ]
   end
 
   # Configuration for the OTP application
@@ -25,6 +28,12 @@ defmodule Hexdocset.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:floki, "~> 0.0.5"}
+    ]
+  end
+
+  def escript_config do
+    [ main_module: Hexdocset.CLI ]
   end
 end
