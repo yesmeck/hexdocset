@@ -51,15 +51,23 @@ defmodule Hexdocset.Docset do
     db = Path.join([docset_path, "Contents", "Resources", "docSet.dsidx"])
     Hexdocset.SQLite.execute(db, "CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);")
     Hexdocset.SQLite.execute(db, "CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);")
-    read_enties(documents_path)
+    ["modules_list.html", "records_list.html", "exceptions_list.html", "protocls_list.html"]
+    |> Enum.map(fn(file) -> Path.join([documents_path, file]) end)
+    |> read_enties([])
     |> Enum.each fn(entry) ->
       Hexdocset.SQLite.execute(db, "INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('#{entry[:name]}', '#{entry[:type]}', '#{entry[:path]}');")
     end
   end
 
-  def read_enties(documents_path) do
-    File.read!(Path.join([documents_path, "modules_list.html"]))
-    |> Hexdocset.Entry.parse
+  def read_enties([file | tail], enties) do
+    if File.exists?(file) do
+      enties = enties ++ (File.read!(file) |> Hexdocset.Entry.parse)
+    end
+    read_enties(tail, enties)
+  end
+
+  def read_enties([], enties) do
+    enties
   end
 end
 
