@@ -65,7 +65,6 @@ defmodule Hexdocset.Docset do
     if File.exists?(file) do
       [_, type] = Regex.run(~r/.+\/(.+?)s_list.html/, file)
       type = String.capitalize(type)
-      IO.puts type
       enties = enties ++ (File.read!(file) |> Hexdocset.Entry.parse(type))
     end
     read_enties(tail, enties)
