@@ -28,8 +28,9 @@ defmodule Hexdocset.DocsetTest do
 
   test "create_plist" do
     docset_path = Path.join([Path.expand("../../tmp", __DIR__), ])
-    create_plist(%Hexdocset.Docset{name: "Hexdocset",docset_path: docset_path})
+    File.mkdir_p!(Path.join([docset_path, "Contents"]))
+    create_plist(%Hexdocset.Docset{name: "Hexdocset", docset_path: docset_path})
 
-    assert File.exists?(Path.join([docset_path, 'Info.plist']))
+    assert File.exists?(Path.join([docset_path, "Contents", 'Info.plist']))
   end
 end

@@ -24,7 +24,7 @@ defmodule Hexdocset.EntryTest do
     </ul>
     """
 
-    assert parse(html) == [
+    assert parse(html, "Module") == [
       %{ name: "run/1", type: "Function", path: "Mix.Tasks.Phoenix.html#run/1" },
       %{ name: "Mix.Tasks.Phoenix", type: "Module", path: "Mix.Tasks.Phoenix.html" }
     ]
