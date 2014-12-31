@@ -40,6 +40,8 @@ defmodule Hexdocset.Docset do
       <string>#{String.downcase(name)}</string>
       <key>isDashDocset</key>
       <true/>
+      <key>dashIndexFilePath</key>
+      <string>overview.html</string>
     </dict>
     </plist>
     """
