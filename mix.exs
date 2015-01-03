@@ -4,7 +4,7 @@ defmodule Hexdocset.Mixfile do
   def project do
     [
       app: :hexdocset,
-      version: "1.0.0",
+      version: "1.0.1",
       name: "Hexdocset",
       description: "Convert hex doc to Dash.app's docset format.",
       package: package,
