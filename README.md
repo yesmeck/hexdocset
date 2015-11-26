@@ -1,6 +1,6 @@
 # Hexdocset
 
-** [Dash support hexdoc offically now!](https://kapeli.com/docsets#exdoc) **
+**[Dash support hexdoc offically now!](https://kapeli.com/docsets#exdoc)**
 
 Convert hex doc to Dash.app's docset format.
 
